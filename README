@@ -2,6 +2,13 @@
 Needleman-Wunsch Alignment in PHP
 ===============================================================================
 
+MODIFICATIONS BY MARCELOQLA:
+
+- Replaced previous Gap Penalty for an Affine Gap scheme.
+- Removed the display as ASCII and HTML functions as I didn't need them. If you do need them just
+copy and reinclude them on the code.
+- Replaced Match/Mismatch schemes for Blosum matrices 65 and 85
+
 ABOUT
 
 An implementation of the Needleman-Wunsch global alignment algorithm in PHP.
@@ -52,11 +59,31 @@ A C C G T C - - - C G
 | |   | | |       | |
 A C A G T C G A A C G
 
+NEW USAGE EXAMPLE:
+
+
+  <?php
+
+  require_once('needleman-wunsch-class.php');
+  
+  $seq1 = 'IVGGNYTTLP';
+  $seq2 = 'IAGNYTALPP';
+  $nw = new NeedlemanWunsch($seq1, $seq2);
+  $run = $nw->getOptimalGlobalAlignment();
+		$aligned_seq1 = $run['seq1'];
+  $aligned_seq2 = $run['seq2'];
+
+  ?>
+
+
 
 AUTHOR
 
 Andrew E. Bruno <aeb@qnot.org>
 
+MODIFIED BY
+
+Marcelo Q. L. Afonso <marceloqla "@t" ufmg "d0t" br>
 
 REFERENCES
 
